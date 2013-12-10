@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/2.3.2/examples/signin.html -->
+<html lang="en" ng-app="leadformApp">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>LeadForm · using Angular and Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<!--Anglar Js -->
+    <script src="js/angular.min.js"></script>
+	<script src="js/sign.js"></script>
+    <!-- Le styles -->
+    <link href="./Sign in · Twitter Bootstrap_files/bootstrap.css" rel="stylesheet">
+    <link href="./Sign in · Twitter Bootstrap_files/bootstrap-responsive.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        padding-left: 125px;
+        padding-right: 125px;
+        background-color: #fff;
+      }
+       
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      
+      .form-signin input.ng-invalid.ng-dirty {
+		background-color: #FA787E;
+	  }
+	  .form-signin input.ng-valid.ng-dirty {
+		background-color: #DFF0D8;
+	  }
+
+    </style>
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="http://getbootstrap.com/2.3.2/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="http://getbootstrap.com/2.3.2/assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="container" style="background-color: #dceaf4; width: 948px;" >
+    	<div class="navbar navbar-inverse">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a href="./index.html" class="brand">Bootstrap</a>
+		      <!-- <div class="nav-collapse collapse">
+		        <ul class="nav">
+		          <li class="">
+		            <a href="./index.html">Home</a>
+		          </li>
+		        </ul>
+		      </div> -->
+		    </div>
+		  </div>
+		</div>
+		
+		
+	<div class="container-fluid" ng-controller="controller1" ng-init="sequence=0; button_type='Save'; showcase='false';">
+ 	  <div class="row-fluid">
+            <div class="span12">
+     		 <!--Body content-->
+        
+      <form class="form-signin" name='leadform' novalidate">
+        <h2 class="form-signin-heading">LeadForm</h2>
+        
+        <input type="text" class="input-block-level" placeholder="Name" ng-model="user.name" value="{{user.name}}" required />
+        <input type="email" class="input-block-level" placeholder="Email address" ng-model="user.email" value="{{user.email}}" required >
+		<input type="text" class="input-block-level" placeholder="Contact Number" ng-model="user.contact_number" value="{{user.contact_number}" required >
+		<input type="text" class="input-block-level" placeholder="Course" ng-model="user.course" value="{{user.course}}" required >
+        <input type="text" class="input-block-level" placeholder="Admission Year" ng-model="user.admission_year" value="{{user.admission_year}}" required >
+        <input type="hidden" value="{{sequence}}" ng-modal="sequence" />
+        <label class="checkbox">
+          <input type="checkbox" name='user.tnc' value="" required checked> TNC
+        </label>
+        <button class="btn btn-large btn-primary" type="submit" ng-click="submit_data(sequence, user); showcase='true'; button_type='Save'" ng-modal="button_type" ng-disabled="leadform.$invalid || isUnchanged(sequence, user)">{{button_type}}</button>
+      </form>
+
+	<table class="table table-condensed" ng-show="showcase">
+		<th>
+			<td>Name</td>
+			<td>Email</td>
+			<td>Contact number</td>
+			<td>Course</td>
+			<td>Admission Year</td>
+		</th>
+		
+	    <tr class="success" ng-repeat="each_dict in data" >
+	    	<td>{{$index+1}}</td>
+	        <td>{{each_dict.name}}</td>
+			<td>{{each_dict.email}}</td>
+			<td>{{each_dict.contact_number}}</td>
+    	    <td>{{each_dict.course}}</td>
+    	    <td>{{each_dict.admission_year}}</td>
+    	    <td><input type="button" value="edit" ng-click="edit($index)"><input type="button" value="delete" ng-click="delete($index);"></td>
+ 	    </tr> 
+	</table>
+	    </div>
+	  </div>
+	</div>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Sign in · Twitter Bootstrap_files/jquery.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-transition.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-alert.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-modal.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-dropdown.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-scrollspy.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-tab.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-tooltip.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-popover.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-button.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-collapse.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-carousel.js"></script>
+    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-typeahead.js"></script>
+
+  
+
+</body></html>
