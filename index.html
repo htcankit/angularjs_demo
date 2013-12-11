@@ -100,7 +100,7 @@
             <div class="span12">
      		 <!--Body content-->
         
-      <form class="form-signin" name='leadform' novalidate">
+      <form class="form-signin" name='leadform' ng-submit="submit_data(sequence, user)" novalidate">
         <h2 class="form-signin-heading">LeadForm</h2>
         
         <input type="text" class="input-block-level" placeholder="Name" ng-model="user.name" value="{{user.name}}" required />
@@ -109,10 +109,10 @@
 		<input type="text" class="input-block-level" placeholder="Course" ng-model="user.course" value="{{user.course}}" required >
         <input type="text" class="input-block-level" placeholder="Admission Year" ng-model="user.admission_year" value="{{user.admission_year}}" required >
         <input type="hidden" value="{{sequence}}" ng-modal="sequence" />
-        <label class="checkbox">
+        <!-- <label class="checkbox">
           <input type="checkbox" name='user.tnc' value="" required checked> TNC
-        </label>
-        <button class="btn btn-large btn-primary" type="submit" ng-click="submit_data(sequence, user); showcase='true'; button_type='Save'" ng-modal="button_type" ng-disabled="leadform.$invalid || isUnchanged(sequence, user)">{{button_type}}</button>
+        </label> -->
+        <button class="btn btn-large btn-primary" type="submit" ng-click="showcase='true'; button_type='Save'" ng-modal="button_type" ng-disabled="leadform.$invalid || isUnchanged(sequence, user)">{{button_type}}</button>
       </form>
 
 	<table class="table table-condensed" ng-show="showcase">

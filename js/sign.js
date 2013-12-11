@@ -5,6 +5,7 @@ app.controller('controller1', ['$scope', function($scope){
 	$scope.submit_data = function(number, user){
 		$scope.data[number] = angular.copy(user);
 		$scope.sequence = $scope.data.length;
+		$scope.user = {}
 	};
 	
 	$scope.edit = function(number){
