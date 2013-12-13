@@ -6,6 +6,7 @@ app.controller('controller1', ['$scope', function($scope){
 		$scope.data[number] = angular.copy(user);
 		$scope.sequence = $scope.data.length;
 		$scope.user = {}
+		$scope.leadform.$setPristine();
 	};
 	
 	$scope.edit = function(number){
